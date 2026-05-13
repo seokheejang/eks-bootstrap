@@ -45,11 +45,13 @@ Planned for Phase 1:
 
 ## Security posture
 
-Primary framework: **SOC 2 Type II** (Security TSC). ISMS-P controls mapped as auxiliary reference.
+Primary framework: **SOC 2 Type II** (Security TSC), targeting global SaaS audit-readiness. ISO 27001:2022 mapped for EU/Asia enterprise markets. ISMS-P mapped for Korean market.
 
-- [Baseline](docs/security/security-baseline.md) — minimum security bar by Phase
-- [SOC 2 compliance design](docs/security/soc2-compliance.md) — TSC-by-TSC design notes
-- [ISMS-P mapping](docs/security/isms-mapping.md) — auto-covered vs. gaps
+- [Baseline](docs/security/security-baseline.md) — minimum security bar by Phase, with Tier 1/2/3 priority (immutable vs. addable later)
+- [SOC 2 compliance design](docs/security/soc2-compliance.md) — TSC-by-TSC + Type I/II audit timeline
+- [SOC 2 audit checklist](docs/security/soc2-checklist.md) — pre-audit readiness + evidence map
+- [ISO 27001 mapping](docs/security/iso27001-mapping.md) — global market secondary
+- [ISMS-P mapping](docs/security/isms-mapping.md) — Korean market reference
 
 ## Docs
 

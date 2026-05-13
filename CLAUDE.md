@@ -35,13 +35,13 @@ eks-bootstrap/
 | 의사결정 | [docs/decisions/](docs/decisions/) | ADR (Architecture Decision Records) |
 | 변경 계획 | [docs/plans/](docs/plans/) | apply 전 plan 문서, `YYYYMMDD-<slug>.md` |
 | 운영 절차 | [docs/runbooks/](docs/runbooks/) | state migration, drift, break-glass 등 |
-| 보안 | [docs/security/](docs/security/) | baseline + SOC 2 + ISMS-P 매핑 |
+| 보안 | [docs/security/](docs/security/) | baseline + SOC 2 (compliance·checklist) + ISO 27001 + ISMS-P 매핑 |
 | 첫 사용 케이스 | [docs/temporal-on-eks.md](docs/temporal-on-eks.md) | Temporal 요구사항·결정 |
 
 ## Phase 로드맵
 
-1. **Phase 1 (PoC)** — VPC + EKS + RDS Aurora Serverless v2 + Temporal (PG visibility, mTLS·인증 X)
-2. **Phase 2 (Staging)** — state 분리, mTLS, ESO, ArgoCD(패키지만), 관측성
-3. **Phase 3 (Prod)** — Multi-AZ, DR, NetworkPolicy, Pod Security
+1. **Phase 1 (PoC)** — VPC + EKS + RDS Aurora Serverless v2 + Temporal (PG visibility, mTLS·인증 X). Tier 1 immutable baseline 박힘.
+2. **Phase 2 (Staging)** — state 분리, mTLS, ESO, ArgoCD(패키지만), 관측성, log retention 365일, CMK rotation. **Type I audit 후보 시점**.
+3. **Phase 3 (Prod)** — Multi-AZ, DR, NetworkPolicy, Pod Security, GuardDuty/Security Hub. Phase 2 + 6~12개월 운영 후 **Type II audit 후보**.
 
-세부 진척은 [docs/plans/](docs/plans/) 참조.
+세부 진척은 [docs/plans/](docs/plans/) 참조. 보안 baseline·audit timeline은 [docs/security/](docs/security/) 참조.

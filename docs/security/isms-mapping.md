@@ -1,6 +1,14 @@
-# ISMS-P Mapping (Reference Only)
+# ISMS-P Mapping
 
-eks-bootstrap의 1차 프레임워크는 **SOC 2 Type II**. ISMS/ISMS-P는 보조 참고용.
+한국 시장 보조 참고용. 본 디렉토리 진입점은 [README.md](README.md). 1차 프레임워크는 [SOC 2 Type II](soc2-compliance.md).
+
+**컨텍스트**: 글로벌 사업이면 [iso27001-mapping.md](iso27001-mapping.md)가 1순위 보조 매핑. 본 문서는 한국 시장 진출 시 ISMS-P 보조용 — ISMS-P 자체가 한국 KISA 인증이라 글로벌에서는 일반적으로 인정되지 않음.
+
+## 리뷰 포커스
+
+- **8개 ISMS-P 도메인 자동 충족 매핑** — 2.5~2.12. SOC 2 TSC 매핑과 일치하는지.
+- **범위 밖 11개** — 1.x 관리체계, 2.1~2.4 조직·인적·물리, 3.x 개인정보 라이프사이클. 본 레포에서 다루지 않음.
+- **Phase 컬럼** — [soc2-compliance.md](soc2-compliance.md) Phase 값과 정합한지.
 
 두 가지를 표로 정리:
 
