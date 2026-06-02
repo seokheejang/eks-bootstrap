@@ -20,6 +20,12 @@ eks-bootstrap/
 
 ## 운영 invariants
 
+- **정합성 체크 (CRITICAL — 사실·교차참조가 이 레포의 핵심)**: 문서나 Terraform 코드를 수정한 후, 커밋 전 반드시 정합성 체크 수행:
+  - *교차참조*: 같은 사실(통제 번호·의미, 버전, 수치, 항목명)이 여러 파일에 등장하면 `grep`으로 전부 대조. 한 곳을 고치면 나머지도 함께 고침 (예: SOC 2 통제 번호의 의미가 5개 문서에 걸쳐 동일한지).
+  - *사실*: 외부 표준·버전 등 사실 주장은 출처(공식 문서·web) 확인 후 기재. 추정으로 단정하지 않음.
+  - *링크·앵커*: 내부 링크가 실제 대상 파일·헤더와 일치.
+  - 수정이 2개 이상 파일에 걸치거나 사실 주장을 건드리면 `/ralph`로 self-review 루프 수행.
+  - 기계적 체크(fmt·validate·tflint·tfsec·시크릿)는 pre-commit 훅이 담당 ([commit-gates.md](docs/conventions/commit-gates.md)). 본 항목은 훅이 못 잡는 *의미적* 정합성 담당.
 - `modules/`에 환경값·시크릿·조직 네이밍 박지 않음. inputs로만 받음.
 - `terraform apply` 전 `docs/plans/`에 plan 문서 있어야 함.
 - 모든 commit은 `docs/conventions/commit-gates.md`의 pre-commit 훅 통과 (시크릿·포맷·tfsec).
@@ -37,6 +43,7 @@ eks-bootstrap/
 | 운영 절차 | [docs/runbooks/](docs/runbooks/) | state migration, drift, break-glass 등 |
 | 보안 | [docs/security/](docs/security/) | baseline + SOC 2 (compliance·checklist) + ISO 27001 + ISMS-P 매핑 |
 | 첫 사용 케이스 | [docs/temporal-on-eks.md](docs/temporal-on-eks.md) | Temporal 요구사항·결정 |
+| 다음 작업 | [docs/next-steps.md](docs/next-steps.md) | 세션 간 인계 — 진입점·우선 작업·미해결 결정 |
 
 ## Phase 로드맵
 

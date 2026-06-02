@@ -31,8 +31,8 @@ ISO 27001:2022 Annex A 4 theme:
 | A.5.16 신원관리 | identity lifecycle | CC6.2, CC6.3 | Phase 1~2 (IRSA, ArgoCD OAuth) |
 | A.5.17 인증정보 | password·token 관리 | CC6.3 | Phase 1~2 (IRSA, ESO) |
 | A.5.18 접근권한 | provisioning·deprovisioning | CC6.1 | Phase 1~2 |
-| A.5.19 공급자 관계 | 벤더 위험 | CC9.1 | Phase 1~2 (version pin + 검증 절차) |
-| A.5.22 공급자 모니터링 | 서비스 변경 평가 | CC9.1 | Phase 1~2 |
+| A.5.19 공급자 관계 | 벤더 위험 | CC9.2 | Phase 1~2 (version pin + 검증 절차) |
+| A.5.22 공급자 모니터링 | 서비스 변경 평가 | CC9.2 | Phase 1~2 |
 | A.5.23 클라우드 보안 | 클라우드 서비스 사용 | CC6.6, CC6.7 | Phase 1~2 |
 | A.5.30 ICT 준비성 | 운영 지속 | A1.x | Phase 3 |
 | A.5.33 기록 보호 | 기록 무결성 | CC7.2 | Phase 2 (CloudTrail LFV, S3 Object Lock) |
@@ -68,7 +68,7 @@ ISO 27001:2022 Annex A 4 theme:
 | A.8.27 보안 아키텍처 | 아키텍처 원칙 | CC8.1 | Phase 1 (ADR) |
 | A.8.28 보안 코딩 | 코딩 표준 | CC8.1 | Phase 1 (conventions/) |
 | A.8.29 보안 테스트 | 보안 시험 | CC8.1 | Phase 1~2 (tfsec, trivy) |
-| A.8.31 환경 분리 | dev/staging/prod | CC9.2 | Phase 2 |
+| A.8.31 환경 분리 | dev/staging/prod | CC9.1 | Phase 2 |
 | A.8.32 변경 관리 | 변경 통제 | CC8.1 | Phase 1 (plan, ADR) |
 | A.8.33 테스트 정보 | 테스트 데이터 보호 | C1.1 | Phase 3 |
 

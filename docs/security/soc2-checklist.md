@@ -88,7 +88,7 @@ audit firm이 *"어디를 보여달라"*고 할 때 빠르게 안내.
 | CC7.2 audit trail | CloudTrail (multi-region + LFV), S3 bucket (Object Lock), VPC Flow Logs, ALB access logs |
 | CC7.3 탐지 | GuardDuty findings, Security Hub findings, Inspector findings |
 | CC8.1 변경 관리 | `docs/plans/*.md`, git log, ADR (`docs/decisions/*.md`), GitHub PR history |
-| CC9.1 벤더 위험 | `docs/conventions/versions.md` (provider/chart pinning + 변경 검증 절차) |
+| CC9.2 벤더·제3자 위험 | `docs/conventions/versions.md` (provider/chart pinning + 변경 검증 절차) |
 | A1.2 백업 | Aurora automated backup, AWS Backup vaults |
 | C1.2 기밀정보 파기 | Aurora PITR retention, S3 lifecycle, secrets rotation Lambda |
 

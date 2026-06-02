@@ -35,7 +35,7 @@ Phase 2에 staging/prod 환경이 추가되는 시점에 환경별 분리 (`terr
 
 - 단일 state는 blast radius가 크다 (apply 실수 한 번에 vpc까지 영향). 1인 운영에서 plan-driven workflow + commit-gates로 완화.
 - state 자체의 보호는 `infra/tf-backend` baseline(SSE-S3 + versioning + public access block + prevent_destroy)으로 처리.
-- Phase 2 분리는 SOC 2 CC9.2(비즈니스 영향) 충족과 일치.
+- Phase 2 분리는 SOC 2 CC9.1(사업 중단 위험 완화) 충족과 일치.
 
 ## References
 

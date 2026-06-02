@@ -8,7 +8,7 @@ eks-bootstrap의 보안 문서 5종 + 본 인덱스. 글로벌 SaaS 사업 audit
 docs/security/
 ├── README.md             (본 인덱스)
 ├── security-baseline.md  (기술 baseline + Tier/Phase 매트릭스)
-├── soc2-compliance.md    (SOC 2 TSC 매핑 + audit timeline)
+├── soc2-compliance.md    (전체 33 CC enumerate + 영역 분류 + audit timeline)
 ├── soc2-checklist.md     (audit-ready checklist + evidence map)
 ├── iso27001-mapping.md   (글로벌 사업 보조)
 └── isms-mapping.md       (한국 시장 보조)
@@ -32,7 +32,7 @@ docs/security/
 | 문서 | 답하는 질문 | 변경 주기 |
 |---|---|---|
 | `security-baseline.md` | *무엇을* *언제까지* 박아야 하나 | 모듈 추가 시 |
-| `soc2-compliance.md` | 어떤 TSC 통제가 어디에 매핑되나 | TSC 매핑 갱신 시 |
+| `soc2-compliance.md` | 33개 CC 전체 + 각 영역(기술/혼합/조직/AWS-inherited)·owner·매핑 | TSC 매핑 갱신 시 |
 | `soc2-checklist.md` | audit 전 무엇을 점검하나 | audit 라운드별 |
 | `iso27001-mapping.md` | ISO 27001 Annex A 자동 충족 / 갭 | 인증 추진 시 |
 | `isms-mapping.md` | ISMS-P 자동 충족 / 갭 (한국 한정) | 인증 추진 시 |
