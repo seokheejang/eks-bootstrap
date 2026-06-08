@@ -13,7 +13,7 @@
 ```
 eks-bootstrap/
 ├── modules/             # 재사용 모듈 (vpc, eks-cluster, eks-node-group, irsa, rds-aurora)
-├── environments/        # 환경별 조립 (dev → staging → prod)
+├── environments/        # 환경별 조립 (dev -> staging -> prod)
 ├── infra/tf-backend/    # state 부트스트랩 (1회성)
 └── docs/                # 규칙·결정·계획·런북·보안 문서
 ```
@@ -37,6 +37,7 @@ eks-bootstrap/
 
 | 카테고리 | 위치 | 용도 |
 |---|---|---|
+| 온보딩 | [docs/onboarding/](docs/onboarding/) | 빌드 단계별 학습 동반 문서 (HTML). Terraform 이해 + SOC 적용 |
 | 컨벤션 | [docs/conventions/](docs/conventions/) | 네이밍, 태깅, 변수, 문서 스타일, 버전 핀 |
 | 의사결정 | [docs/decisions/](docs/decisions/) | ADR (Architecture Decision Records) |
 | 변경 계획 | [docs/plans/](docs/plans/) | apply 전 plan 문서, `YYYYMMDD-<slug>.md` |
