@@ -21,7 +21,7 @@
 |---|---|---|---|
 | [000](000-terraform-foundation.html) | Terraform 기초 (repo-무관 foundation) | (사전) | 작성됨 |
 | [001](001-orientation.html) | 오리엔테이션과 지도 | (전체) | 작성됨 |
-| 002 | 컨벤션 + HCL 적용 + 계정 사전조건 + commit-gates | 0, 0.5 | 예정 |
+| [002](002-conventions-and-prerequisites.html) | 컨벤션 + 계정 사전조건 + commit-gates | 0, 0.5 | 작성됨 |
 | 003 | state & backend bootstrap (`infra/tf-backend`) | 1 | 예정 |
 | 004 | `environments/dev` skeleton + backend partial config | 2 | 예정 |
 | 005 | `modules/vpc` | 3 | 예정 |

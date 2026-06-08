@@ -300,7 +300,7 @@ name              = "${var.cluster_name}-sg"   # "${...}" = 문자열 안에 값
   backend "s3" {
     bucket       = "eksbs-tfstate"            # state 를 저장하는 S3 버킷
     key          = "environments/dev/terraform.tfstate"
-    region       = "ap-northeast-2"
+    region       = "us-east-2"
     use_lockfile = true                       # S3 native lock (동시 apply 방지)
     encrypt      = true
   }

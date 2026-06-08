@@ -29,3 +29,4 @@
 | [0005](0005-helm-outside-terraform.md) | Helm 적용은 Terraform 외부 (Makefile -> GitOps) | Accepted |
 | [0006](0006-argocd-package-only.md) | ArgoCD는 Phase 2부터, 패키지 설치만 | Accepted |
 | [0007](0007-soc2-primary-isms-reference.md) | 보안 1차 프레임워크는 SOC 2, ISMS-P는 매핑 참고 | Accepted |
+| [0008](0008-aws-access-account-strategy.md) | AWS 자격증명·계정 전략 (Phase 1 access key, SSO/multi-account 연기) | Accepted |

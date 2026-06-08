@@ -8,7 +8,8 @@
 2. [docs/plans/README.md](plans/README.md) — Phase 1 빌드 순서 8단계
 3. [docs/security/README.md](security/README.md) — 보안 docs 진입점 + Quick Map (37 항목)
 4. [docs/conventions/versions.md](conventions/versions.md) — 버전 핀 + 변경 검증 절차
-5. 본 파일 (next-steps.md)
+5. [docs/onboarding/](onboarding/) — 빌드 단계별 학습 동반 (000 Terraform 기초 -> 001 이 레포 지도 -> 002 컨벤션·계정 사전조건)
+6. 본 파일 (next-steps.md)
 
 ## 우선 작업 (Phase 1 build order)
 
@@ -30,12 +31,20 @@
 
 8단계까지 완료 = Phase 1 PoC 완료.
 
+## 진행 상황 + 결정 (2026-06-08)
+
+- **완료**: step 0.5 commit-gates (`.gitignore`/`.pre-commit-config.yaml`/`.tflint.hcl`, 커밋됨). 온보딩 000-002 작성.
+- **결정 ([ADR 0008](decisions/0008-aws-access-account-strategy.md))**: Phase 1 = 단일 계정 + IAM user `terraform-eks-dev` access key. SSO -> Phase 2, multi-account -> Phase 3.
+- **AWS region 결정**: dev = `us-east-2` (싼 US region, us-east-1과 동일 tier). staging/prod·다중 region 은 추후.
+- **EKS 버전**: Phase 1 target `1.35` (N-1, [versions.md](conventions/versions.md#eks)).
+- **진행 중**: step 0 계정 하드닝 (EBS default encryption=**us-east-2** / S3 account public access block / Root MFA / CloudTrail) + 인증(`terraform-eks-dev` access key).
+- **다음**: step 1 `infra/tf-backend`.
+
 ## 미해결 결정 (next 세션에 결정 필요)
 
 - **Temporal helm chart 버전** — 현재 TBD ([versions.md "Helm Chart"](conventions/versions.md#helm-chart)). Phase 1 step 8 직전 확정.
 - **도메인·DNS** — Temporal frontend 노출 시점에 결정 (Phase 2일 가능성).
 - **VPC CIDR + subnet 구조** — `modules/vpc/` 작성 직전 확정. 향후 staging/prod·peering 고려한 IP 공간 설계.
-- **AWS region** — 현재 가정 `ap-northeast-2`. 확정 또는 다중 region 결정.
 
 ## 향후 고려 (Phase 2~3)
 

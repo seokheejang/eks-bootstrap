@@ -12,7 +12,7 @@
 
 ## S2. Target Resources
 
-신규 생성 (region: ap-northeast-2 가정, env 변경 시 tfvars로 override):
+신규 생성 (region: us-east-2 (dev), env 변경 시 tfvars로 override):
 
 - `aws_s3_bucket.state` (예상 이름: `eksbs-dev-tfstate` 등; bucket 이름은 글로벌 유니크라 tfvars에서 결정)
 - `aws_s3_bucket_versioning.state`
