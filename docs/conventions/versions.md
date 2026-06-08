@@ -14,19 +14,20 @@
 | `hashicorp/aws` | `~> 6.0` | Phase 1 | OpsWorks/SimpleDB 제거. `aws_region.name` deprecated. v5에서 silent drift 사례 보고. [v6 upgrade guide](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/version-6-upgrade) |
 | `hashicorp/tls` | `~> 4.0` | Phase 1 | 안정. EKS OIDC thumbprint·TLS 자원용 |
 | `hashicorp/kubernetes` | `~> 3.0` | Phase 1~2 | `kubernetes_manifest` credential resolution 변경 (env var가 config 못 덮어씀). unversioned resource deprecated |
-| `hashicorp/helm` | `~> 3.0` | Phase 2+ | **block→attribute syntax 전면 변경** (`kubernetes = {...}`, `set = [{...}]`). v2→v3 state migration 실패 보고 다수. 처음부터 v3로 작성. Phase 1 미사용 ([ADR 0005](../decisions/0005-helm-outside-terraform.md)) |
-| `alekc/kubectl` | `~> 2.0` | Phase 2+ | `gavinbunney/kubectl` 비활성(2022-03~) → alekc fork. CRD-의존 리소스(Gateway API, ESO CR)용. ArgoCD 도입 시 함께 ([ADR 0006](../decisions/0006-argocd-package-only.md)) |
+| `hashicorp/helm` | `~> 3.0` | Phase 2+ | **block->attribute syntax 전면 변경** (`kubernetes = {...}`, `set = [{...}]`). v2->v3 state migration 실패 보고 다수. 처음부터 v3로 작성. Phase 1 미사용 ([ADR 0005](../decisions/0005-helm-outside-terraform.md)) |
+| `alekc/kubectl` | `~> 2.0` | Phase 2+ | `gavinbunney/kubectl` 비활성(2022-03~) -> alekc fork. CRD-의존 리소스(Gateway API, ESO CR)용. ArgoCD 도입 시 함께 ([ADR 0006](../decisions/0006-argocd-package-only.md)) |
 
 ## EKS
 
 - 최소 1.28 ([temporal-on-eks.md](../temporal-on-eks.md)).
-- Phase 1 target: **1.35** (적용 직전 latest stable 재확인).
+- Phase 1 target: **1.35** (N-1 채택). latest는 1.36이나, 2026-06-08 기준 Karpenter/Cilium 공식 매트릭스가 1.36 미등재이고 신규 minor 안정성 확보 위해 한 버전 뒤를 고정. 1.35는 표준지원 2027-03-27까지. 적용 직전 latest stable 재확인.
+- 버전 선택 정책: 신규 K8s minor는 ecosystem(Karpenter/Cilium) 공식 지원 + EKS 출시 후 안정화될 때까지 **latest-1(N-1)** 을 target으로. bump 시 아래 "버전 변경 시 검증 절차" 적용.
 
 ## EKS / Karpenter / Cilium 호환성 anchor
 
 | EKS K8s | Karpenter | Cilium | 검증 상태 |
 |---|---|---|---|
-| 1.35 | 1.12.0 | 1.19.3 | Karpenter ✓ ([공식 매트릭스](https://karpenter.sh/docs/upgrading/compatibility/): K8s 1.35는 Karpenter >= 1.9). Cilium ✓ (참조 환경 실제 deploy 검증 — `helm_release.version` + 운영 흔적). 단 [공식 compat doc](https://docs.cilium.io/en/stable/network/kubernetes/compatibility/)에 1.19↔1.35 명시 부재 ⚠ — 다음 K8s/Cilium minor 업그레이드 시 재검증 필수 |
+| 1.35 | 1.12.0 | 1.19.3 | Karpenter [OK] ([공식 매트릭스](https://karpenter.sh/docs/upgrading/compatibility/): K8s 1.35는 Karpenter >= 1.9). Cilium [OK] (참조 환경 실제 deploy 검증 — `helm_release.version` + 운영 흔적). 단 [공식 compat doc](https://docs.cilium.io/en/stable/network/kubernetes/compatibility/)에 1.19<->1.35 명시 부재 [!] — 다음 K8s/Cilium minor 업그레이드 시 재검증 필수 |
 
 본 레포는 Phase 1에 VPC CNI + MNG로 시작. Karpenter/Cilium은 Phase 3+ ADR 선행.
 
@@ -44,13 +45,21 @@ chart 버전은 `environments/<env>/terraform.tfvars`로 외부 주입. 모듈 h
 | `karpenter/karpenter` | `1.12.0` | Phase 3+ | 호환성 ADR 선행 |
 | `cilium/cilium` | `1.19.3` | Phase 3+ | 호환성 ADR 선행 |
 
+## Commit-gate 훅 (dev tooling)
+
+pre-commit 훅 버전(`gitleaks`, `pre-commit-hooks`, `pre-commit-terraform`)은 `.pre-commit-config.yaml`의 `rev` 필드가 single source of truth. 여기 번호를 중복 기재하지 않음 (drift 방지). 스펙: [commit-gates.md](commit-gates.md).
+
+- 최초 핀: 2026-06 (각 repo releases 페이지 직접 확인).
+- tflint AWS ruleset(`tflint-ruleset-aws`)은 첫 AWS 모듈 작성 시(빌드 step 3) `.tflint.hcl`에 추가 + 버전 확정. 현재는 번들 terraform ruleset만 활성.
+- bump 시 아래 "버전 변경 시 검증 절차" 적용 (1차 소스 확인 -> 기록).
+
 ## Apply/Runtime 함정 노트
 
 `terraform plan`이 안 잡는 항목. 모듈/plan 작성 시 직접 점검.
 
 1. **Aurora IAM auth: cluster ID 함정** — IAM 정책 `Resource` ARN에 **rds cluster ID** 사용 필수. instance ID로 쓰면 `rds-db:connect` 있어도 연결 거부. `modules/rds-aurora/` IRSA 예시에 명시 + 코멘트.
 2. **`use_lockfile` + bucket policy encryption mismatch** — lock file은 state file과 같은 SSE 설정으로 PUT됨. bucket policy가 encryption header 강제 시 lock file도 동일 정책 만족해야 함. `infra/tf-backend/`에서 lock file 경로(`*.tflock`) 명시적 허용.
-3. **Helm v3 state migration 함정** — v2→v3 마이그레이션 실패 보고 다수. 우리는 Phase 2부터 v3 신규 작성으로 회피.
+3. **Helm v3 state migration 함정** — v2->v3 마이그레이션 실패 보고 다수. 우리는 Phase 2부터 v3 신규 작성으로 회피.
 4. **Cilium + K8s 매트릭스 공식 명시 부재** — Cilium 도입/업그레이드 시 release note + e2e test 매트릭스 직접 재검증.
 
 ## 버전 변경 시 검증 절차

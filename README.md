@@ -38,7 +38,7 @@ Planned for Phase 1:
 ## Stack
 
 - **IaC**: Terraform **1.11+** (S3 native locking; DynamoDB not used)
-- **Cluster**: AWS EKS 1.28+ (Phase 1 target: 1.30)
+- **Cluster**: AWS EKS 1.28+ (Phase 1 target: 1.35)
 - **DB**: Aurora PostgreSQL Serverless v2
 - **State backend**: S3 with `use_lockfile = true`
 - **First workload**: [Temporal](docs/temporal-on-eks.md) via Helm (later GitOps)
