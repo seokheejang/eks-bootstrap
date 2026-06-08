@@ -30,8 +30,8 @@ Phase 3에 Multi-AZ provisioned (`engine_mode = "provisioned"` + `instance_class
 - Phase 1 ~$45/월 (Single-AZ, 0.5 ACU idle).
 - 모듈 작명·구조가 Phase 1~3 일관 (`modules/rds-aurora`).
 - Phase 3 마이그레이션은 모듈 input 변경뿐 (`engine_mode`, `instance_class`).
-- Phase 1 Single-AZ → Phase 3 Multi-AZ 전환 시 일시 다운타임 가능 (snapshot + restore 또는 reader 추가).
-- Aurora Serverless v2 cold-start 지연 가능 (idle → 활성). PoC 수용 가능.
+- Phase 1 Single-AZ -> Phase 3 Multi-AZ 전환 시 일시 다운타임 가능 (snapshot + restore 또는 reader 추가).
+- Aurora Serverless v2 cold-start 지연 가능 (idle -> 활성). PoC 수용 가능.
 
 ### Security Implications
 

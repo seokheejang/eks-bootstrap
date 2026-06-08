@@ -20,9 +20,9 @@ docs/security/
 
 | 목적 | 시작 |
 |---|---|
-| "지금 무엇을 박아야 하나" | [security-baseline.md](security-baseline.md) → Tier 1 표 |
-| "SOC 2가 우리 코드에 어떻게 매핑되나" | [soc2-compliance.md](soc2-compliance.md) → TSC 표 |
-| "audit 앞두고 무엇을 점검하나" | [soc2-checklist.md](soc2-checklist.md) → Type I readiness |
+| "지금 무엇을 박아야 하나" | [security-baseline.md](security-baseline.md) -> Tier 1 표 |
+| "SOC 2가 우리 코드에 어떻게 매핑되나" | [soc2-compliance.md](soc2-compliance.md) -> TSC 표 |
+| "audit 앞두고 무엇을 점검하나" | [soc2-checklist.md](soc2-checklist.md) -> Type I readiness |
 | "글로벌 사업 (EU/아시아) 진출 시" | [iso27001-mapping.md](iso27001-mapping.md) |
 | "한국 시장 진출 시" | [isms-mapping.md](isms-mapping.md) |
 | "Plan 작성 중 보안 영향 검토" | [soc2-compliance.md](soc2-compliance.md) + [security-baseline.md Tier](security-baseline.md#우선순위-분류--구축-시-박을-것-vs-후속-추가) |
@@ -93,7 +93,7 @@ flowchart TB
 - 상태 값: 적용 / 부분 / 미적용.
 - 참조 링크: 동일 디렉토리 `[file.md](file.md)`, 상위 `[file](../path/file.md)`.
 
-## Quick Map (항목 → Tier × Phase)
+## Quick Map (항목 -> Tier × Phase)
 
 전체 보안 항목을 한 표로 cross-reference. 상세는 [security-baseline.md](security-baseline.md).
 

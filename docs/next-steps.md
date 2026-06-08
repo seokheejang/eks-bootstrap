@@ -40,9 +40,9 @@
 ## 향후 고려 (Phase 2~3)
 
 - **Phase 1 후반**: CloudTrail multi-region + LFV ([security-baseline Tier 2](security/security-baseline.md#tier-2--phase-1-후반--phase-2-운영-중-추가-가능-evidence-일관성-위해-빨리))
-- **Phase 2**: state 분리 (단일 → 환경별), drift detection (CC4.1), ArgoCD 패키지 모듈, ESO, mTLS, log retention 365일
+- **Phase 2**: state 분리 (단일 -> 환경별), drift detection (CC4.1), ArgoCD 패키지 모듈, ESO, mTLS, log retention 365일
 - **Phase 3**: Multi-AZ Aurora provisioned, GuardDuty/Security Hub, Pod Security, NACL, Confidentiality 통제
-- **Audit milestone**: Phase 2 baseline 완료 → Type I 후보. Phase 2 + 6~12개월 운영 → Type II ([soc2-compliance.md Audit Timeline](security/soc2-compliance.md#audit-timeline-type-i-vs-type-ii))
+- **Audit milestone**: Phase 2 baseline 완료 -> Type I 후보. Phase 2 + 6~12개월 운영 -> Type II ([soc2-compliance.md Audit Timeline](security/soc2-compliance.md#audit-timeline-type-i-vs-type-ii))
 
 ## 보류 항목 (의식적 미작성)
 

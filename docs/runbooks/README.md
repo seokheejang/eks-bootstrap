@@ -12,8 +12,8 @@
 
 | 파일 | 작성 시점 | 내용 |
 |---|---|---|
-| `backend-migration-s3.md` | Phase 1 1단계 직후 | local state → S3 backend 이전 |
-| `state-split.md` | Phase 2 진입 | 단일 state → 환경/레이어 분리 (`terraform state mv`) |
+| `backend-migration-s3.md` | Phase 1 1단계 직후 | local state -> S3 backend 이전 |
+| `state-split.md` | Phase 2 진입 | 단일 state -> 환경/레이어 분리 (`terraform state mv`) |
 | `break-glass-eks.md` | Phase 3 | prod EKS 비상 접근 |
 | `db-restore.md` | Phase 3 | Aurora PITR 복원 시연 |
 

@@ -193,7 +193,7 @@ eks-bootstrap이 직접 책임지는 건 **기술 7 + 혼합 16의 기술 부분
 
 ## Audit Timeline (Type I vs Type II)
 
-SOC 2는 두 가지 audit type. 글로벌 사업이면 보통 둘 다 거침 (Type I 먼저 → Type II 후속).
+SOC 2는 두 가지 audit type. 글로벌 사업이면 보통 둘 다 거침 (Type I 먼저 -> Type II 후속).
 
 ### Type I — Point-in-time (설계 적합성)
 

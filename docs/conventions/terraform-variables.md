@@ -37,6 +37,6 @@ environments/<env>/
 
 ## 모듈/환경 경계
 
-- 환경 → 모듈: AWS 식별자(`vpc_id`, `cluster_name`), 환경 이름, 태그, 환경별 설정값
-- 모듈 → 환경: 후속 모듈이 필요로 하는 ID·endpoint·ARN
+- 환경 -> 모듈: AWS 식별자(`vpc_id`, `cluster_name`), 환경 이름, 태그, 환경별 설정값
+- 모듈 -> 환경: 후속 모듈이 필요로 하는 ID·endpoint·ARN
 - 모듈 내부 결정(예: subnet CIDR 계산)은 모듈 안에서 끝냄. 환경은 결과만 받음.

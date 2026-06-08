@@ -2,7 +2,7 @@
 
 글로벌 사업 (EU·아시아 enterprise 고객) 대응 시 보조 매핑. 본 디렉토리 진입점은 [README.md](README.md). 1차 프레임워크는 [SOC 2 Type II](soc2-compliance.md).
 
-ISO/IEC 27001:2022는 Annex A를 **4 theme · 93 controls**로 재구성 (이전 2013 대비 114 → 93 통합). AICPA 공식 매핑상 SOC 2 TSC와 약 **80% 통제 중복** — dual cert 시 단일 audit firm으로 20~35% 비용 절감 가능.
+ISO/IEC 27001:2022는 Annex A를 **4 theme · 93 controls**로 재구성 (이전 2013 대비 114 -> 93 통합). AICPA 공식 매핑상 SOC 2 TSC와 약 **80% 통제 중복** — dual cert 시 단일 audit firm으로 20~35% 비용 절감 가능.
 
 두 가지 표:
 1. SOC 2 충족 시 ISO 27001 Annex A의 어느 항목이 *자동 충족*되는가
@@ -15,7 +15,7 @@ ISO/IEC 27001:2022는 Annex A를 **4 theme · 93 controls**로 재구성 (이전
 - **80% overlap / 20~35% 비용 절감 수치** — AICPA 공식 매핑 기준. [soc2-checklist.md global market section](soc2-checklist.md#5-global-market-확장-iso-27001-dual)과 동일 출처.
 - **Phase 컬럼 정합성** — 자동 충족 매핑의 "충족 Phase"가 [soc2-compliance.md TSC 매핑](soc2-compliance.md#trust-services-criteria-매핑-security-우선)과 일치.
 
-## 1. 자동 충족 매핑 (SOC 2 → ISO 27001:2022 Annex A)
+## 1. 자동 충족 매핑 (SOC 2 -> ISO 27001:2022 Annex A)
 
 ISO 27001:2022 Annex A 4 theme:
 - **A.5 Organizational** (37 controls)
@@ -113,7 +113,7 @@ ISO 27001 특화 항목. SOC 2 baseline 외에 추가 작업 필요.
 | 한국 enterprise | ISMS-P | 별도 ([isms-mapping.md](isms-mapping.md)) |
 
 **dual cert 권장 시나리오**:
-- 미국 + EU 동시 진출 → SOC 2 + ISO 27001 dual
+- 미국 + EU 동시 진출 -> SOC 2 + ISO 27001 dual
 - 단일 audit firm에서 두 audit 동시 진행 시 controls 80% 재사용
 - 비용 절감 20~35%, 운영 부담은 거의 단일 cert과 동일
 
@@ -139,4 +139,4 @@ GDPR은 *법규* (regulation), ISO 27001은 *표준* (standard). 다른 layer.
 - [isms-mapping.md](isms-mapping.md) — 한국 ISMS-P (보조)
 - ISO/IEC 27001:2022 (공식 구매): https://www.iso.org/standard/27001
 - ISO/IEC 27001:2022 Annex A 변경 요약: https://www.iso.org/news/ref2820.html
-- AICPA SOC 2 ↔ ISO 27001 매핑 (공식): https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2
+- AICPA SOC 2 <-> ISO 27001 매핑 (공식): https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2

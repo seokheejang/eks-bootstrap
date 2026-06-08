@@ -50,7 +50,7 @@ backend block은 이 stack에 **없음** (local state로 동작). `terraform.tfs
 - **IAM 변경**: 없음 (bucket policy는 추후 plan에서 정교화). 본 plan에선 default bucket owner(account root) 외 접근자 없음.
 - **시크릿 취급**: 없음 (bucket 이름과 region만 tfvars에 있음, 둘 다 비밀 아님).
 - **Apply/Runtime 함정 점검** ([versions.md](../conventions/versions.md#applyruntime-함정-노트)):
-  - **#2 `use_lockfile` + encryption mismatch**: 이 plan은 SSE-S3 (`AES256`)를 적용. lock file(`*.tflock`)도 같은 PUT 경로로 자동 동일 암호화 적용됨. bucket policy로 `s3:x-amz-server-side-encryption` 헤더 강제 시 lock file 경로도 동일 정책 만족해야 함 → 본 plan은 bucket policy 미설정이라 현재는 영향 없음. Phase 2에서 bucket policy 도입 시 재점검 필수.
+  - **#2 `use_lockfile` + encryption mismatch**: 이 plan은 SSE-S3 (`AES256`)를 적용. lock file(`*.tflock`)도 같은 PUT 경로로 자동 동일 암호화 적용됨. bucket policy로 `s3:x-amz-server-side-encryption` 헤더 강제 시 lock file 경로도 동일 정책 만족해야 함 -> 본 plan은 bucket policy 미설정이라 현재는 영향 없음. Phase 2에서 bucket policy 도입 시 재점검 필수.
 
 ## S4. Success Criteria
 
@@ -86,7 +86,7 @@ aws s3api get-bucket-lifecycle-configuration --bucket "$BUCKET_NAME"
 
 ## S6. Rollback Procedure
 
-S3 bucket은 `prevent_destroy = true`로 보호 → Terraform 명령으로는 삭제 불가 (의도). 정말 제거해야 한다면:
+S3 bucket은 `prevent_destroy = true`로 보호 -> Terraform 명령으로는 삭제 불가 (의도). 정말 제거해야 한다면:
 
 ```bash
 # 1. 모든 객체 + 버전 제거 (주의: 다른 stack의 state가 들어가있지 않은지 먼저 확인)

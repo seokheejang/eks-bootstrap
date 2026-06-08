@@ -7,8 +7,8 @@ eks-bootstrap 자원이 지켜야 할 최소 보안 기준. 모든 환경(dev/st
 ## 리뷰 포커스
 
 - **Tier 1 immutable 항목 11개** — 첫 plan(`20260513-tf-backend.md`) 작성 시 모두 반영되는지.
-- **Tier 1 ↔ Tier 2 경계** — EKS Secret CMK / Aurora storage_encrypted / S3 Object Lock은 정말 immutable인가 (AWS docs 기준).
-- **Phase 1 baseline 표의 Tier 컬럼** — Tier 표와 일치하는지. 최근 4건(EKS API public / RDS public access / IRSA / 필수 태그) T1 → T2 정정 적용됨.
+- **Tier 1 <-> Tier 2 경계** — EKS Secret CMK / Aurora storage_encrypted / S3 Object Lock은 정말 immutable인가 (AWS docs 기준).
+- **Phase 1 baseline 표의 Tier 컬럼** — Tier 표와 일치하는지. 최근 4건(EKS API public / RDS public access / IRSA / 필수 태그) T1 -> T2 정정 적용됨.
 - **Tier 3 "S3 Object Lock on other audit log buckets" 캐비엇** — 해당 bucket 생성 시점에 enable 필수.
 
 ## 원칙
@@ -17,7 +17,7 @@ eks-bootstrap 자원이 지켜야 할 최소 보안 기준. 모든 환경(dev/st
 2. **암호화 기본 on** — 저장·전송·키 envelope 전부.
 3. **감사 가능** — 변경·접근 모두 로그에 남음.
 4. **재현 가능** — 손으로 만든 자원 없음. Terraform 외부 변경 = 드리프트.
-5. **실행 시 검증** — `terraform apply` 후 plan S4(Success Criteria) 명령으로 결과 확인 → S7(Verification Result)에 기록. 미충족 시 S5/S6 rollback 또는 baseline 갱신. `terraform plan`이 못 잡는 위험은 실행 후 검증으로만 잡힘 ([versions.md "Apply/Runtime 함정 노트"](../conventions/versions.md#applyruntime-함정-노트) 참조).
+5. **실행 시 검증** — `terraform apply` 후 plan S4(Success Criteria) 명령으로 결과 확인 -> S7(Verification Result)에 기록. 미충족 시 S5/S6 rollback 또는 baseline 갱신. `terraform plan`이 못 잡는 위험은 실행 후 검증으로만 잡힘 ([versions.md "Apply/Runtime 함정 노트"](../conventions/versions.md#applyruntime-함정-노트) 참조).
 
 ## 우선순위 분류 — 구축 시 박을 것 vs 후속 추가
 
@@ -48,7 +48,7 @@ eks-bootstrap 자원이 지켜야 할 최소 보안 기준. 모든 환경(dev/st
 | Log retention 365일 상향 (CloudWatch·S3) | Phase 2 | 변경 가능. SOC 2 auditor 권장 최소 1년 |
 | ESO (External Secrets Operator) | Phase 2 | helm release 추가. K8s Secret 평문 분리 |
 | KMS CMK rotation 활성 (annual) | Phase 2 | 변경 가능 (`enable_key_rotation = true`) |
-| EBS·RDS·tfstate에 CMK 적용 (AWS-managed → customer-managed) | Phase 2 | 변경 가능하나 일부 자원은 재생성 (tfstate bucket 등 — 새 bucket 만들어 migration) |
+| EBS·RDS·tfstate에 CMK 적용 (AWS-managed -> customer-managed) | Phase 2 | 변경 가능하나 일부 자원은 재생성 (tfstate bucket 등 — 새 bucket 만들어 migration) |
 | ALB access logs S3 | Phase 2 (Ingress 도입 시) | 자원 추가, downtime 없음 |
 | VPC Flow Logs S3 | Phase 2 | 자원 추가, downtime 없음 |
 | mTLS (Temporal frontend) | Phase 2 | helm values 변경 |
@@ -68,7 +68,7 @@ eks-bootstrap 자원이 지켜야 할 최소 보안 기준. 모든 환경(dev/st
 | NACL (defense-in-depth, SG와 별도) | Phase 3 | 자원 추가 |
 | CloudTrail centralized account 분리 | Phase 3 | 마이그레이션 비용 있음, multi-account 필요 |
 | AWS Backup plans | Phase 3 | 자원 추가 |
-| Aurora Multi-AZ provisioned + PITR 7일+ | Phase 3 | Aurora Serverless → provisioned 전환, downtime 가능 |
+| Aurora Multi-AZ provisioned + PITR 7일+ | Phase 3 | Aurora Serverless -> provisioned 전환, downtime 가능 |
 | S3 Object Lock on other audit log buckets (CloudTrail, ALB logs, VPC Flow) | Phase 3 | **각 bucket 생성 시 enable 필수**. Phase 2에 해당 bucket 만들 때 미리 박을 것 |
 | Confidentiality 통제 (데이터 분류·파기 정책) | Phase 3 | C1.1/C1.2 ([soc2-compliance.md](soc2-compliance.md#confidentiality-tsc)) |
 

@@ -32,7 +32,7 @@ AWS EKS 위에 [Temporal](https://temporal.io) 플랫폼을 자체 구축할 때
 | 보안 | mTLS (cert-manager) | 필수 | 프로덕션 |
 | IAM | IRSA | 필수 | Pod별 AWS 권한 |
 | 관측성 | Prometheus + Grafana | 필수 | 기존 스택 활용 |
-| 로깅 | Fluent Bit → CloudWatch/Loki | 필수 | |
+| 로깅 | Fluent Bit -> CloudWatch/Loki | 필수 | |
 | 백업 | Aurora 자동 백업 + PITR | 필수 | 7일+ |
 | 인증 (UI) | OIDC (Cognito/SSO) | 필수 | Web UI 노출 시 |
 

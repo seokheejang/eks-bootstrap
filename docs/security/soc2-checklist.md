@@ -72,7 +72,7 @@ Type I 항목 + 다음 운영 evidence **6~12개월 누적**.
 - [ ] VPC Flow Logs / ALB access logs 누락 없음
 - [ ] alert + on-call 응답 기록
 
-## 3. Evidence Map (통제 → 어디서 보여줄지)
+## 3. Evidence Map (통제 -> 어디서 보여줄지)
 
 audit firm이 *"어디를 보여달라"*고 할 때 빠르게 안내.
 
