@@ -19,8 +19,24 @@
 
 ## 설정 위치
 
-- `.pre-commit-config.yaml` (레포 루트, 빌드 순서 1단계 후 도입)
-- 각 개발자 로컬: `pre-commit install` 1회
+- `.pre-commit-config.yaml` (레포 루트) — 훅 정의 + 버전 핀. 핀의 single source of truth ([versions.md "Commit-gate 훅"](versions.md#commit-gate-훅-dev-tooling)).
+- `.tflint.hcl` (레포 루트) — 번들 terraform ruleset만 활성. AWS ruleset(`tflint-ruleset-aws`)은 첫 AWS 모듈 작성 시 추가.
+- 도입 시점: 빌드 순서 **step 0.5** (tf-backend step 1보다 먼저 — 첫 커밋부터 게이트 적용).
+
+## 로컬 설치 (개발자 1회)
+
+훅이 호출하는 도구(gitleaks, tflint, trivy, terraform)는 pre-commit이 자동 설치하지 않음 — system PATH 의존. 직접 설치:
+
+```bash
+# macOS (Homebrew). terraform 은 이미 설치돼 있다고 가정.
+brew install pre-commit gitleaks trivy
+brew install terraform-linters/tap/tflint   # tflint 는 homebrew-core 에 없음 -> 공식 tap
+
+pre-commit install            # git hook 등록 (1회)
+pre-commit run --all-files    # 전체 1회 실행 (.tf 없으면 terraform_* 훅은 skip)
+```
+
+함정: `brew install tflint` 단독은 실패 (homebrew-core 미존재). 반드시 `terraform-linters/tap/tflint` 사용. 또한 `brew install A B tflint` 처럼 묶으면 잘못된 formula 하나가 batch 전체를 중단시키므로 tflint 는 줄을 분리.
 
 ## Bypass 정책
 
